@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fraud Detection — Qrious Insight | Annie Liu</title>
+
+  <!-- Same typography as main site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    /* Clean detail layout (no sidebar) */
+    body{ display:block; background:#fff; }
+
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:56px 18px 84px;
+    }
+
+    .topbar{
+      margin-bottom:18px;
+    }
+
+    .back{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid rgba(0,0,0,.14);
+      border-radius:999px;
+      background:#fff;
+      color:#2a2a2a;
+      transition: background .2s ease, color .2s ease, border-color .2s ease, outline-offset .15s ease;
+    }
+    .back:hover{
+      background:#2a2a2a;
+      color:#fff;
+      border-color:#2a2a2a;
+    }
+    .back:focus-visible{
+      outline:2px solid #2a2a2a;
+      outline-offset:2px;
+    }
+
+    /* HERO */
+    .hero{
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow:0 14px 45px rgba(0,0,0,.06);
+      background:#fff;
+      overflow:hidden;
+      margin-top:14px;
+    }
+
+    .hero-img{
+      height:300px;
+      background-image:url("../assets/portfolio/fraud.jpg");
+      background-size:cover;
+      background-position:center center;
+      position:relative;
+      opacity:0;
+      transform:scale(1.02);
+      animation: heroFadeIn .5s ease-out .1s forwards;
+    }
+    @keyframes heroFadeIn{
+      to{ opacity:1; transform:scale(1); }
+    }
+
+    .hero-img::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(255,255,255,0.05) 0%,
+        rgba(255,255,255,0.5) 60%,
+        rgba(255,255,255,0.78) 100%
+      );
+    }
+
+    .hero-body{
+      padding:18px 18px 16px;
+    }
+
+    .title{
+      font-family:var(--sans), "Lato", sans-serif;
+      font-size:1.75rem;
+      font-weight:600;
+      color:#141414;
+      margin:0 0 6px;
+      letter-spacing:0.2px;
+    }
+
+    .subtitle{
+      color:#6a6a6a;
+      font-size:14px;
+      line-height:1.6;
+      margin:0 0 14px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .chip{
+      font-size:12px;
+      color:#2a2a2a;
+      border:1px solid rgba(0,0,0,.10);
+      background:rgba(255,255,255,.55);
+      padding:5px 10px;
+      border-radius:999px;
+      backdrop-filter:blur(2px);
+    }
+
+    /* Blocks */
+    .block{
+      margin-top:18px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow:0 14px 45px rgba(0,0,0,.06);
+      background:#fff;
+      padding:16px;
+    }
+
+    .block h2{
+      font-family:var(--sans), "Lato", sans-serif;
+      font-size:18px;
+      font-weight:600;
+      margin:0 0 10px;
+      color:#141414;
+    }
+
+    .overview{
+      font-size:16px;
+      line-height:1.9;
+      color:#2b2b2b;
+      margin:0;
+    }
+
+    .overview + .overview{
+        margin-top:16px;   /* one clean blank line */
+    }
+
+    .video{
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.12);
+      background:#000;
+      aspect-ratio:16 / 9;
+      overflow:hidden;
+    }
+
+    .video video,
+    .video iframe{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+    }
+
+    .pdf{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border:1px solid #2a2a2a;
+      border-radius:999px;
+      background:#2a2a2a;
+      color:#fff;
+      font-size:13px;
+      margin-top:10px;
+      transition: opacity .2s ease, outline-offset .15s ease;
+    }
+    .pdf:hover{
+      opacity:.92;
+    }
+    .pdf:focus-visible{
+      outline:2px solid #fff;
+      outline-offset:2px;
+    }
+
+    @media (max-width:900px){
+      .hero-img{ height:200px; }
+      .title{ font-size:28px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <a class="back" href="../index.html#portfolio">← Back to Portfolio</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-img"></div>
+
+      <div class="hero-body">
+        <h1 class="title">Behavioral Fraud Detection</h1>
+
+        <p class="subtitle">
+          Behavior-based risk scoring and anomaly detection for digital fraud screening.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Classification</span>
+          <span class="chip">Imbalanced data</span>
+          <span class="chip">XGBoost</span>
+          <span class="chip">Temporal Feature Extraction</span>
+          <span class="chip">Behavioral Modeling</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="block">
+      <h2>Overview</h2>
+      <p class="overview">
+        In collaboration with Qrious Insight, we built a scalable fraud detection framework grounded entirely in behavioral data. I led the exploratory analysis of 30-day pre-ban web activity, identifying statistically significant differences in category usage and temporal patterns between fraud and clean users.
+      </p>
+      <p class="overview">
+        Based on these insights, I engineered features across web activity, app activity, and search behavior, and benchmarked multiple model families. Our final XGBoost-based screening model generates monthly fraud confidence scores, reducing manual review burden while improving data quality for downstream analytics.
+      </p>
+      <p class="overview">
+        <strong>Key outcome:</strong> The model is expected to reduce incentive costs by 10% annually.
+      </p>
+    </section>
+
+    <!-- Video -->
+    <section class="block">
+      <h2>Presentation Video</h2>
+
+      <div class="video">
+        <video controls preload="metadata">
+          <source src="../assets/videos/qrious-fraud.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- PDF -->
+    <section class="block">
+      <h2>PDF Report</h2>
+      <a class="pdf"
+         href="../assets/reports/qrious-fraud-report.pdf"
+         target="_blank"
+         rel="noreferrer">
+        Open PDF Report
+      </a>
+    </section>
+
+    <div class="topbar" style="margin-top:32px;">
+      <a class="back" href="../index.html#portfolio">← Back to Portfolio</a>
+    </div>
+
+  </div>
+</body>
+</html>

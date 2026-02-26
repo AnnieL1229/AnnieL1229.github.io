@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annie Liu | Education Journal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Minimal page wrapper using same design system */
+    .journal-wrap{ max-width: 980px; margin: 0 auto; padding: 46px 18px 70px; }
+    .top-back{ margin-bottom: 26px; }
+    .post{
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      background: #fff;
+      padding: 18px;
+      margin: 18px 0;
+    }
+    .post-head{
+      display:flex; justify-content: space-between; gap: 14px; align-items: baseline;
+      margin-bottom: 12px;
+    }
+    .post h3{ margin: 0; font-size: 1.2rem; }
+    .post .date{ font-style: italic; color: #2a2a2a; font-family: var(--font-heading); }
+    .post-grid{
+      display:grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; align-items: start;
+    }
+    .photo{
+      border: 1px solid var(--border);
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: #fafafa;
+    }
+    .photo img{ width:100%; height:100%; object-fit: cover; display:block; filter: grayscale(10%); }
+    @media (max-width: 900px){ .post-grid{ grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+  <div class="journal-wrap">
+    <div class="top-back">
+      <a class="mini-cta" href="index.html">← Back to Home</a>
+    </div>
+
+    <h2 class="section-title">Education Journal</h2>
+    <p class="muted">A place to document progress with text + photos. Add entries over time.</p>
+
+    <hr class="divider">
+
+    <h2 class="section-title" id="mit">MIT</h2>
+
+    <article class="post">
+      <div class="post-head">
+        <h3>Week 1 — Settling In</h3>
+        <span class="date">Feb 2026</span>
+      </div>
+      <div class="post-grid">
+        <div>
+          <p class="muted">
+            Write a short reflection: what you learned, what you built, and one highlight.
+            Keep posts concise and visual—this reads premium and intentional.
+          </p>
+          <p class="muted">
+            Example: “This week I scoped an analytics project, aligned on metrics, and built an initial
+            data pipeline. Next week: baseline models and stakeholder review.”
+          </p>
+        </div>
+        <div class="photo">
+          <img src="assets/journal/mit-1.jpg" alt="MIT moment" onerror="this.src='https://via.placeholder.com/600x800';" />
+        </div>
+      </div>
+    </article>
+
+    <hr class="divider">
+
+    <h2 class="section-title" id="ucsd">UCSD</h2>
+
+    <article class="post">
+      <div class="post-head">
+        <h3>Project Highlight — Capstone Memory</h3>
+        <span class="date">Year</span>
+      </div>
+      <div class="post-grid">
+        <div>
+          <p class="muted">
+            Add a story with 1–2 photos: the problem, your contribution, and the outcome.
+          </p>
+        </div>
+        <div class="photo">
+          <img src="assets/journal/ucsd-1.jpg" alt="UCSD moment" onerror="this.src='https://via.placeholder.com/600x800';" />
+        </div>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

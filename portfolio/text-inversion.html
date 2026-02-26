@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personalized image generation with text inversion: learn a pseudo-word from few images. Multi-vector embeddings and diffusion models. Annie Liu portfolio." />
+  <title>Custom Concept Image Generation | Annie Liu</title>
+
+  <!-- Same typography as main site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    /* Clean detail layout (no sidebar) */
+    body{ display:block; background:#fff; }
+
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:56px 18px 84px;
+    }
+
+    .topbar{
+      margin-bottom:18px;
+    }
+
+    .back{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid rgba(0,0,0,.14);
+      border-radius:999px;
+      background:#fff;
+      color:#2a2a2a;
+      transition: background .2s ease, color .2s ease, border-color .2s ease, outline-offset .15s ease;
+    }
+    .back:hover{
+      background:#2a2a2a;
+      color:#fff;
+      border-color:#2a2a2a;
+    }
+    .back:focus-visible{
+      outline:2px solid #2a2a2a;
+      outline-offset:2px;
+    }
+
+    /* HERO */
+    .hero{
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow:0 14px 45px rgba(0,0,0,.06);
+      background:#fff;
+      overflow:hidden;
+      margin-top:14px;
+    }
+
+    .hero-img{
+      height:380px;
+      background-image:url("../assets/portfolio/text-inversion.jpg");
+      background-size:cover;
+      background-position:center center;
+      position:relative;
+      opacity:0;
+      transform:scale(1.02);
+      animation: heroFadeIn .5s ease-out .1s forwards;
+    }
+    @keyframes heroFadeIn{
+      to{ opacity:1; transform:scale(1); }
+    }
+
+    .hero-img::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(255,255,255,0.05) 0%,
+        rgba(255,255,255,0.5) 60%,
+        rgba(255,255,255,0.78) 100%
+      );
+    }
+
+    .hero-body{
+      padding:18px 18px 16px;
+    }
+
+    .title{
+      font-family:var(--sans), "Lato", sans-serif;
+      font-size:1.75rem;
+      font-weight:600;
+      color:#141414;
+      margin:0 0 6px;
+      letter-spacing:0.2px;
+    }
+
+    .subtitle{
+      color:#6a6a6a;
+      font-size:14px;
+      line-height:1.6;
+      margin:0 0 14px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .chip{
+      font-size:12px;
+      color:#2a2a2a;
+      border:1px solid rgba(0,0,0,.10);
+      background:rgba(255,255,255,.55);
+      padding:5px 10px;
+      border-radius:999px;
+      backdrop-filter:blur(2px);
+    }
+
+    /* Blocks */
+    .block{
+      margin-top:18px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow:0 14px 45px rgba(0,0,0,.06);
+      background:#fff;
+      padding:16px;
+    }
+
+    .block h2{
+      font-family:var(--sans), "Lato", sans-serif;
+      font-size:18px;
+      font-weight:600;
+      margin:0 0 10px;
+      color:#141414;
+    }
+
+    .overview{
+      font-size:16px;
+      line-height:1.9;
+      color:#2b2b2b;
+      margin:0;
+    }
+
+    .overview + .overview{
+      margin-top:16px;
+    }
+
+    .video{
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.12);
+      background:#000;
+      aspect-ratio:16 / 9;
+      overflow:hidden;
+    }
+
+    .video video,
+    .video iframe{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+    }
+
+    .pdf{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border:1px solid #2a2a2a;
+      border-radius:999px;
+      background:#2a2a2a;
+      color:#fff;
+      font-size:13px;
+      margin-top:10px;
+      transition: opacity .2s ease, outline-offset .15s ease;
+    }
+    .pdf:hover{
+      opacity:.92;
+    }
+    .pdf:focus-visible{
+      outline:2px solid #fff;
+      outline-offset:2px;
+    }
+
+    @media (max-width:900px){
+      .hero-img{ height:260px; }
+      .title{ font-size:28px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <a class="back" href="../index.html#portfolio">← Back to Portfolio</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-img"></div>
+
+      <div class="hero-body">
+        <h1 class="title">Custom Concept Image Generation</h1>
+
+        <p class="subtitle">
+          Teaching a diffusion model a new “pseudo-word” from a few images to generate user-specific visuals.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Generative AI</span>
+          <span class="chip">Diffusion Models</span>
+          <span class="chip">Representation Learning</span>
+          <span class="chip">Textual Inversion</span>
+          <span class="chip">Image Generation</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="block">
+      <h2>Overview</h2>
+
+      <p class="overview">
+        Built a personalized image generation workflow using text inversion, a lightweight technique that adds a new token to a text-to-image model’s vocabulary to represent a user-specific concept. Instead of fine-tuning the full diffusion model, I trained the token embedding from a small set of example images and designed prompt templates to help the learned concept generalize across contexts.
+      </p>
+
+      <p class="overview">
+        I compared single-vector and multi-vector text inversion and found that multi-vector embeddings produced more consistent identity preservation and realism in generated outputs. Prompt diversity during training also mattered significantly, improving robustness when generating novel compositions and styles.
+      </p>
+      <p class="overview">
+        <strong>Key takeaway:</strong> Multi-vector embeddings and prompt diversity during training drove more consistent, generalizable results.
+      </p>
+    </section>
+
+    <!-- Video -->
+    <section class="block">
+      <h2>Presentation Video</h2>
+
+      <div class="video">
+        <video controls preload="metadata">
+          <source src="../assets/videos/text-inversion.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- PDF -->
+    <section class="block">
+      <h2>PDF Report</h2>
+      <a class="pdf"
+         href="../assets/reports/Custom Concept Image Generation Report.pdf"
+         target="_blank"
+         rel="noreferrer">
+        Open PDF Report
+      </a>
+    </section>
+
+    <div class="topbar" style="margin-top:32px;">
+      <a class="back" href="../index.html#portfolio">← Back to Portfolio</a>
+    </div>
+
+  </div>
+</body>
+</html>
